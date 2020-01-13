@@ -29,6 +29,14 @@
         <item>6</item>
         <item>7</item>
     </string-array>
+    <string name="turns">Turns</string>
+    <string name="are_increasing">Increasing turns</string>
+    <string name="are_increasing_summary_on">Every five games the turns to solve the board increase by one</string>
+    <string name="are_increasing_summary_off">Constant number of turns over the entire game</string>
+    <string name="hearts">Hearts</string>
+    <string name="game_time">Time</string>
+    <string name="pattern_pick">Choose a pattern</string>
+    <string name="pattern_pick_summary">The tiles will flip in the chosen pattern</string>
 
     <!-- Preferances Titles -->
     <string name="messages_header">Messages</string>

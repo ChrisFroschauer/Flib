@@ -10,14 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SettingsActivity"
+            android:name=".views.settings.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".TitleScreen">
+            android:parentActivityName=".views.titlescreen.TitlescreenActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hawla.flib.TitleScreen" />
+                android:value="com.hawla.flib.views.titlescreen.TitlescreenActivity" />
         </activity>
-        <activity android:name=".TitleScreen">
+        <activity android:name=".views.titlescreen.TitlescreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

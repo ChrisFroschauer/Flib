@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start_preference_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <TextView
+            android:id="@+id/patter_pick_title"
+            style="@style/Widget.AppCompat.TextView.SpinnerItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pattern_pick"
+            app:layout_constraintStart_toStartOf="@id/guideline_start_preference_text"
+            app:layout_constraintTop_toBottomOf="@id/guideline_top" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <Button
+            android:id="@+id/ppick_button5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text=""
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@id/guideline_right_mid"
+            app:layout_constraintStart_toEndOf="@+id/guideline_left_mid"
+            app:layout_constraintTop_toBottomOf="@+id/ppick_button2" />
+
+        <Button
+            android:id="@+id/ppick_button1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@id/guideline_left_mid"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@id/patter_pick_title" />
+
+        <Button
+            android:id="@+id/ppick_button3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:text=""
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+            app:layout_constraintStart_toEndOf="@+id/ppick_button2"
+            app:layout_constraintTop_toBottomOf="@id/patter_pick_title" />
+
+        <Button
+            android:id="@+id/ppick_button2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:text=""
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_right_mid"
+            app:layout_constraintStart_toEndOf="@+id/ppick_button1"
+            app:layout_constraintTop_toBottomOf="@id/patter_pick_title" />
+
+        <Button
+            android:id="@+id/ppick_button7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text=""
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@id/guideline_left_mid"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@+id/ppick_button4" />
+
+        <Button
+            android:id="@+id/ppick_button6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text=""
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@id/guideline_right"
+            app:layout_constraintStart_toEndOf="@+id/guideline_right_mid"
+            app:layout_constraintTop_toBottomOf="@+id/ppick_button3" />
+
+        <Button
+            android:id="@+id/ppick_button8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text=""
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@id/guideline_right_mid"
+            app:layout_constraintStart_toEndOf="@+id/guideline_left_mid"
+            app:layout_constraintTop_toBottomOf="@+id/ppick_button5" />
+
+        <Button
+            android:id="@+id/ppick_button4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text=""
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@id/guideline_left_mid"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@id/ppick_button1" />
+
+        <Button
+            android:id="@+id/ppick_button9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text=""
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@id/guideline_right"
+            app:layout_constraintStart_toEndOf="@+id/guideline_right_mid"
+            app:layout_constraintTop_toBottomOf="@+id/ppick_button6" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_right_mid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_left_mid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.4" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

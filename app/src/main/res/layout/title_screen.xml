@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TitleScreen">
+    tools:context=".views.titlescreen.TitlescreenActivity">
 
 
     <TextView
@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -25,25 +25,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/bottom_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ButtonContainer"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/title">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/horizontal_top"
@@ -51,96 +42,73 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="20dp"
-            app:layout_constraintGuide_percent="0.1" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/horizontal_mid_top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.45" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/horizontal_mid_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.55" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/horizontal_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.9" />
+            app:layout_constraintGuide_percent="0.04" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/vertical_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.1" />
+            app:layout_constraintGuide_percent="0.04" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/vertical_mid_left"
+            android:id="@+id/vertical_mid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.45" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/vertical_mid_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.55" />
+            app:layout_constraintGuide_percent="0.5" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/vertical_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.9" />
-
-        <Button
-            android:id="@+id/start_timerace"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="@string/timerace_mode"
-            app:layout_constraintBottom_toTopOf="@+id/horizontal_mid_top"
-            app:layout_constraintEnd_toStartOf="@+id/vertical_right"
-            app:layout_constraintStart_toStartOf="@+id/vertical_mid_right"
-            app:layout_constraintTop_toTopOf="@+id/horizontal_top" />
+            app:layout_constraintGuide_percent="0.96" />
 
         <Button
             android:id="@+id/start_endless"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:backgroundTint="@color/enabledPattern"
             android:text="@string/endless_mode"
-            app:layout_constraintBottom_toTopOf="@+id/horizontal_mid_top"
-            app:layout_constraintEnd_toStartOf="@+id/vertical_mid_left"
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@id/vertical_mid"
             app:layout_constraintStart_toStartOf="@+id/vertical_left"
+            app:layout_constraintTop_toTopOf="@+id/horizontal_top" />
+
+
+        <Button
+            android:id="@+id/start_timerace"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/enabledPattern"
+            android:text="@string/timerace_mode"
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_right"
+            app:layout_constraintStart_toEndOf="@id/vertical_mid"
             app:layout_constraintTop_toTopOf="@+id/horizontal_top" />
 
         <Button
             android:id="@+id/show_highscore"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:backgroundTint="@color/enabledPattern"
             android:text="@string/highscore"
-            app:layout_constraintBottom_toTopOf="@+id/horizontal_bottom"
-            app:layout_constraintEnd_toStartOf="@+id/vertical_mid_left"
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_mid"
             app:layout_constraintStart_toStartOf="@+id/vertical_left"
-            app:layout_constraintTop_toTopOf="@+id/horizontal_mid_bottom" />
+            app:layout_constraintTop_toBottomOf="@id/start_endless" />
 
         <Button
             android:id="@+id/show_options"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:backgroundTint="@color/enabledPattern"
             android:text="@string/options"
-            app:layout_constraintBottom_toTopOf="@+id/horizontal_bottom"
+            app:layout_constraintDimensionRatio="1.0"
             app:layout_constraintEnd_toStartOf="@+id/vertical_right"
-            app:layout_constraintStart_toStartOf="@+id/vertical_mid_right"
-            app:layout_constraintTop_toTopOf="@+id/horizontal_mid_bottom" />
+            app:layout_constraintStart_toStartOf="@+id/vertical_mid"
+            app:layout_constraintTop_toBottomOf="@id/start_endless" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

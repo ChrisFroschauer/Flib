@@ -16,9 +16,72 @@
 
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <PreferenceCategory
+        app:key="general"
+        app:title="@string/general_header"
+        app:iconSpaceReserved="false">
+
+        <ListPreference
+            app:key="game_size"
+            app:title="@string/game_size"
+            app:entries="@array/game_size_human"
+            app:entryValues="@array/game_size_data"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="2"/>
+
+        <EditTextPreference
+            app:key="turns"
+            app:title="@string/turns"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="3"/>
+
+        <SwitchPreferenceCompat
+            app:key="are_increasing"
+            app:title="@string/are_increasing"
+            app:summaryOn="@string/are_increasing_summary_on"
+            app:summaryOff="@string/are_increasing_summary_off"/>
+
+        <EditTextPreference
+            app:key="hearts"
+            app:title="@string/hearts"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="3"/>
+
+        <Preference
+            app:key="game_time"
+            app:title="@string/game_time"
+            app:defaultValue="5:00"/>
+
+<!--        <NumberPickerPreference-->
+<!--            app:key="game_time_number"-->
+<!--            app:title="@string/game_time"-->
+<!--            app:summary="numberpicker"/>-->
+
+        <!--Preference
+            app:layout="@layout/fragment_pattern_pick"
+            app:key="patternPick"
+            app:title="@string/pattern_pick"
+            app:summary="@string/pattern_pick_summary"
+            /-->
+
+        <com.hawla.flib.views.settings.PatternPickPreference
+            app:layout="@layout/pattern_picker_preference"
+            app:key="pref_theme"
+            app:title="@string/pattern_pick"
+            app:summary="@string/pattern_pick_summary"
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="false"/>
+
+
+
+    </PreferenceCategory>
+
+
     <PreferenceCategory
         app:key="about"
-        app:title="@string/about_header">
+        app:title="@string/about_header"
+        app:iconSpaceReserved="false">
 
         <Preference
             app:key="version"
@@ -26,21 +89,7 @@
             app:summary="1.0.0"/><!-- TODO: app version from manifest/gradle or smth.-->
 
     </PreferenceCategory>
-
-    <PreferenceCategory
-        app:key="general"
-        app:title="@string/general_header">
-
-        <ListPreference
-            app:key="game_size"
-            app:title="@string/game_size"
-            app:entries="@array/game_size_human"
-            app:entryValues="@array/game_size_data"/>
-
-
-    </PreferenceCategory>
-
-
+<!-- generated
     <PreferenceCategory app:title="@string/messages_header">
 
         <EditTextPreference
@@ -71,6 +120,6 @@
             app:summaryOn="@string/attachment_summary_on"
             app:title="@string/attachment_title" />
 
-    </PreferenceCategory>
+    </PreferenceCategory>-->
 
 </PreferenceScreen>
