@@ -28,11 +28,13 @@
             app:entries="@array/game_size_human"
             app:entryValues="@array/game_size_data"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="2"/>
+            app:defaultValue="3"/>
 
-        <EditTextPreference
+        <ListPreference
             app:key="turns"
             app:title="@string/turns"
+            app:entries="@array/turns_data"
+            app:entryValues="@array/turns_data"
             app:useSimpleSummaryProvider="true"
             app:defaultValue="3"/>
 
@@ -42,16 +44,26 @@
             app:summaryOn="@string/are_increasing_summary_on"
             app:summaryOff="@string/are_increasing_summary_off"/>
 
-        <EditTextPreference
+        <ListPreference
             app:key="hearts"
             app:title="@string/hearts"
+            app:entries="@array/hearts_data"
+            app:entryValues="@array/hearts_data"
             app:useSimpleSummaryProvider="true"
             app:defaultValue="3"/>
 
-        <Preference
+<!--        <Preference-->
+<!--            app:key="game_time"-->
+<!--            app:title="@string/game_time"-->
+<!--            app:defaultValue="5:00"/>-->
+
+        <ListPreference
             app:key="game_time"
             app:title="@string/game_time"
-            app:defaultValue="5:00"/>
+            app:entries="@array/game_time_data"
+            app:entryValues="@array/game_time_data"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="2:00"/>
 
 <!--        <NumberPickerPreference-->
 <!--            app:key="game_time_number"-->

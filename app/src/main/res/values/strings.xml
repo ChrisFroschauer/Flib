@@ -30,31 +30,45 @@
         <item>7</item>
     </string-array>
     <string name="turns">Turns</string>
+    <string-array name="turns_data">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
     <string name="are_increasing">Increasing turns</string>
-    <string name="are_increasing_summary_on">Every five games the turns to solve the board increase by one</string>
+    <string name="are_increasing_summary_on">Turns increase every fifth game</string>
     <string name="are_increasing_summary_off">Constant number of turns over the entire game</string>
     <string name="hearts">Hearts</string>
+    <string-array name="hearts_data">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
     <string name="game_time">Time</string>
+    <string-array name="game_time_data">
+        <item>1:00</item>
+        <item>2:00</item>
+        <item>3:00</item>
+        <item>4:00</item>
+        <item>5:00</item>
+    </string-array>
     <string name="pattern_pick">Choose a pattern</string>
     <string name="pattern_pick_summary">The tiles will flip in the chosen pattern</string>
-
-    <!-- Preferances Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="general_header">General</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- in game -->
+    <string name="turns_left">turns left</string>
+    <string name="hearts_left">hearts left</string>
+    <string name="infinite">∞</string>
+
+    <!-- dialog -->
+    <string name="lose_heart">You lose a heart</string>
+    <string name="lose_game">Game Over</string>
+    <string name="level_up">Level</string>
+    <string name="current_level">Level</string>
 
 </resources>

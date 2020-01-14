@@ -48,32 +48,16 @@ class SettingsActivity : AppCompatActivity(){
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
             //EditText of turns/hearts to only take numbers
-            val editTextPreferenceTurns = findPreference<EditTextPreference>("turns")
+            /*val editTextPreferenceTurns = findPreference<EditTextPreference>("turns")
             val editTextPreferenceHearts = findPreference<EditTextPreference>("hearts")
             editTextPreferenceTurns!!.setOnBindEditTextListener{
                 editText -> editText.inputType = InputType.TYPE_CLASS_NUMBER
-                //editText.filters = arrayOf<InputFilter>(InputFilterMinMax(1, 30)) //TODO Min and Max value, maybe my filter implementation flawed?
+                //editText.filters = arrayOf<InputFilter>(InputFilterMinMax(1, 30))
             }
             editTextPreferenceHearts!!.setOnBindEditTextListener{
                 editText -> editText.inputType = InputType.TYPE_CLASS_NUMBER
-            }
-
-        }
-
-        override fun onActivityCreated(savedInstanceState: Bundle?) {
-            super.onActivityCreated(savedInstanceState)
-            /*val view2 = getView()
-            view2?.findViewById<Button>(R.id.ppick_button1)
-            //val view2 : View = inflater.inflate(R.layout.fragment_pattern_pick, container, false)
-            val button: Button? = view2?.findViewById(R.id.ppick_button1)
-            if (button != null){
-                Log.i("settingsactivity", "found the button!")
-                button?.setBackgroundColor(Color.BLUE)
             }*/
-        }
 
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
         }
 
         fun updateFullPattern(pattern: List<Boolean>){
@@ -96,13 +80,14 @@ class SettingsActivity : AppCompatActivity(){
 
 
         // implemented for the TimePickerDialog
-        override fun onPreferenceTreeClick(preference: Preference?): Boolean {
+        // TODO uncomment: if you want to use timepicker:
+        /*override fun onPreferenceTreeClick(preference: Preference?): Boolean {
             when(preference!!.key) {
                 KEY_PREF_GAME_TIME ->
                     showTimePickerDialog(preference)
             }
             return super.onPreferenceTreeClick(preference)
-        }
+        }*/
 
         private fun showTimePickerDialog(preference: Preference) {
             var newFragment: DialogFragment = TimePickerFragment()

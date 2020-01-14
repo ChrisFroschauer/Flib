@@ -4,6 +4,12 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <!-- own colors: -->
     <color name="enabledPattern">#33B5E5</color>
     <color name="disabledPattern">#aaa</color>
+
+    <color name="fieldColorTrue">#33B5E5</color>
+    <color name="fieldColorFalse">#D81B60</color>
+
+    <color name="colorBackground">#191925</color>
 </resources>

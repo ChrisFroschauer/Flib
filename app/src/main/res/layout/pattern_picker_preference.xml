@@ -37,8 +37,8 @@
             android:layout_height="0dp"
             android:text=""
             app:layout_constraintDimensionRatio="1.0"
-            app:layout_constraintEnd_toStartOf="@id/guideline_right_mid"
-            app:layout_constraintStart_toEndOf="@+id/guideline_left_mid"
+            app:layout_constraintEnd_toStartOf="@id/guideline_2"
+            app:layout_constraintStart_toEndOf="@+id/guideline_1"
             app:layout_constraintTop_toBottomOf="@+id/ppick_button2" />
 
         <Button
@@ -47,7 +47,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             app:layout_constraintDimensionRatio="1.0"
-            app:layout_constraintEnd_toStartOf="@id/guideline_left_mid"
+            app:layout_constraintEnd_toStartOf="@id/guideline_1"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
             app:layout_constraintTop_toBottomOf="@id/patter_pick_title" />
 
@@ -69,7 +69,7 @@
             android:layout_marginTop="8dp"
             android:text=""
             app:layout_constraintDimensionRatio="1.0"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_right_mid"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_2"
             app:layout_constraintStart_toEndOf="@+id/ppick_button1"
             app:layout_constraintTop_toBottomOf="@id/patter_pick_title" />
 
@@ -79,7 +79,7 @@
             android:layout_height="0dp"
             android:text=""
             app:layout_constraintDimensionRatio="1.0"
-            app:layout_constraintEnd_toStartOf="@id/guideline_left_mid"
+            app:layout_constraintEnd_toStartOf="@id/guideline_1"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
             app:layout_constraintTop_toBottomOf="@+id/ppick_button4" />
 
@@ -90,7 +90,7 @@
             android:text=""
             app:layout_constraintDimensionRatio="1.0"
             app:layout_constraintEnd_toStartOf="@id/guideline_right"
-            app:layout_constraintStart_toEndOf="@+id/guideline_right_mid"
+            app:layout_constraintStart_toEndOf="@+id/guideline_2"
             app:layout_constraintTop_toBottomOf="@+id/ppick_button3" />
 
         <Button
@@ -99,8 +99,8 @@
             android:layout_height="0dp"
             android:text=""
             app:layout_constraintDimensionRatio="1.0"
-            app:layout_constraintEnd_toStartOf="@id/guideline_right_mid"
-            app:layout_constraintStart_toEndOf="@+id/guideline_left_mid"
+            app:layout_constraintEnd_toStartOf="@id/guideline_2"
+            app:layout_constraintStart_toEndOf="@+id/guideline_1"
             app:layout_constraintTop_toBottomOf="@+id/ppick_button5" />
 
         <Button
@@ -109,7 +109,7 @@
             android:layout_height="0dp"
             android:text=""
             app:layout_constraintDimensionRatio="1.0"
-            app:layout_constraintEnd_toStartOf="@id/guideline_left_mid"
+            app:layout_constraintEnd_toStartOf="@id/guideline_1"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
             app:layout_constraintTop_toBottomOf="@id/ppick_button1" />
 
@@ -120,7 +120,7 @@
             android:text=""
             app:layout_constraintDimensionRatio="1.0"
             app:layout_constraintEnd_toStartOf="@id/guideline_right"
-            app:layout_constraintStart_toEndOf="@+id/guideline_right_mid"
+            app:layout_constraintStart_toEndOf="@+id/guideline_2"
             app:layout_constraintTop_toBottomOf="@+id/ppick_button6" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -131,14 +131,14 @@
             app:layout_constraintGuide_percent="0.8" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_right_mid"
+            android:id="@+id/guideline_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.6" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_left_mid"
+            android:id="@+id/guideline_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"

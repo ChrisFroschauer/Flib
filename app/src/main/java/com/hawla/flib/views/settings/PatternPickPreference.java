@@ -17,10 +17,12 @@ import com.hawla.flib.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 public class PatternPickPreference extends Preference {
 
-    private final String PICKPATTERN_TAG = "pick_pattern_";
+    public final static String PICKPATTERN_TAG = "pick_pattern_";
 
     private SharedPreferences preferencesPatternPick;
 
