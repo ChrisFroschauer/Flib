@@ -1,6 +1,5 @@
 package com.hawla.flib.views.game;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +45,7 @@ public class CustomInfoDialog extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState){
 
         View view = inflater.inflate(
-                R.layout.custom_info_dialog_fragment, container);
+                R.layout.fragment_custom_info_dialog, container);
 
         textView = view.findViewById(R.id.dialog_main_text);
         textView.setText(mainText);

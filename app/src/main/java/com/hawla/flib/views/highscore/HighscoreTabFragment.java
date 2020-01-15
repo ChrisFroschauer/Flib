@@ -1,11 +1,14 @@
 package com.hawla.flib.views.highscore;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewManager;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -58,18 +61,26 @@ public class HighscoreTabFragment extends Fragment {
 
         shorthandsTextView = root.findViewById(R.id.shorthands_text_view);
         valuesTextView = root.findViewById(R.id.values_text_view);
-        highscoreViewModel.getText().observe(this, new Observer<String[]>() {
-            @Override
-            public void onChanged(@Nullable String[] s) {
-                if (shorthandsTextView != null){
-                    shorthandsTextView.setText(s[0]);
-                    valuesTextView.setText(s[1]);
-                }else{
-                    Log.w("setText FAILED", s[0]);
-                }
-
+        highscoreViewModel.getText().observe(this, s -> {
+            if (shorthandsTextView != null){
+                shorthandsTextView.setText(s[0]);
+                valuesTextView.setText(s[1]);
+            }else{
+                Log.w("setText FAILED", s[0]);
             }
+
         });
         return root;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        // remove progress bar
+        final HighscoreActivity hostActivity = (HighscoreActivity) super.getActivity();
+        hostActivity.progressBar.setAlpha(0.0f);
+        //((ViewManager)hostActivity.getParent()).removeView(hostActivity.progressBar);
+        //((ViewManager) hostActivity.progressBar.getParent()).removeView(hostActivity.progressBar);
     }
 }

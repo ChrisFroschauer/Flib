@@ -17,13 +17,6 @@
         app:layout_constraintTop_toBottomOf="@+id/score_container">
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_top_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
-
-        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_left_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,16 +35,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline_left_list"
-            app:layout_constraintTop_toBottomOf="@id/guideline_top_list" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/values_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline_right_list"
-            app:layout_constraintTop_toBottomOf="@id/guideline_top_list" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="right"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

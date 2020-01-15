@@ -78,4 +78,15 @@
     <string name="highscore_placeholder">AAA</string>
     <string name="enter_name">Enter Name:</string>
 
+    <!-- leave game dialog -->
+    <string name="leave_dialog_title">Do you want to leave the current game?</string>
+    <string name="leave_dialog_message">If you leave the current state of the game gets lost.</string>
+    <string name="leave_dialog_positive">yes, leave</string>
+    <string name="leave_dialog_negative">no, keep playing</string>
+
+    <!-- loading text -->
+    <string name="loading_1">mixing some patterns</string>
+    <string name="loading_2">baking a cake</string>
+    <string name="loading_3">feeding the sheeps</string>
+
 </resources>

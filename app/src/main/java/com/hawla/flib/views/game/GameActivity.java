@@ -1,5 +1,6 @@
 package com.hawla.flib.views.game;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
@@ -7,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.preference.PreferenceManager;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ import android.widget.TextView;
 import com.hawla.flib.R;
 import com.hawla.flib.viewmodel.GameViewModel;
 import com.hawla.flib.views.gameover.GameOverActivity;
+import com.hawla.flib.views.titlescreen.TitlescreenActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +44,8 @@ public class GameActivity extends AppCompatActivity {
     public static final int MILLIS_PER_SECOND = 1000;
     public static final String SEPARATOR_EMPTY = " ";
     public static final String SEPARATOR_NORMAL = ":";
+
+    public static final int MILLIS_GAME_DIALOGS = 1500;
 
     private int gameSize;
     private boolean isTimerace;
@@ -176,7 +181,7 @@ public class GameActivity extends AppCompatActivity {
                 // Animate progress bar:
                 new Handler().post(() -> {
                     ProgressBarAnimation anim = new ProgressBarAnimation(dialog.getProgressBar(), 0, 100);
-                    anim.setDuration(2000);
+                    anim.setDuration(MILLIS_GAME_DIALOGS);
                     dialog.getProgressBar().startAnimation(anim);
                 });
 
@@ -184,15 +189,15 @@ public class GameActivity extends AppCompatActivity {
                 if (dialogValue.getType() == CustomInfoDialog.DialogType.GAME_OVER) {
                     new Handler().postDelayed(() -> {
                         Intent intent = new Intent(this, GameOverActivity.class);
-                        intent.putExtra(INTENT_SCORE, 100);
+                        intent.putExtra(INTENT_SCORE, dialogValue.getValue());
                         intent.putExtra(INTENT_TIMERACE, isTimerace);
                         startActivity(intent);
-                    }, 2000);
+                    }, MILLIS_GAME_DIALOGS);
                 }else {
                     // close dialog after x sec:
                     new Handler().postDelayed(() -> {
                         dialog.dismiss();
-                    }, 2000);
+                    }, MILLIS_GAME_DIALOGS);
                 }
             }
         });
@@ -265,6 +270,23 @@ public class GameActivity extends AppCompatActivity {
 
     private void setOnClickListenerToButton(Button button, int x, int y){
         button.setOnClickListener(v -> model.clickOnField(x, y));
+    }
+
+    @Override
+    public void onBackPressed(){
+        // Ask if user wants to discard the game:
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        Activity act = this;
+        builder.setTitle(getString(R.string.leave_dialog_title));
+        builder.setMessage(getString(R.string.leave_dialog_message));
+        builder.setPositiveButton(getString(R.string.leave_dialog_positive), (dialog, id) -> {
+            Intent intent = new Intent(act, TitlescreenActivity.class);
+            startActivity(intent);
+        });
+        builder.setNegativeButton(getString(R.string.leave_dialog_negative),null);
+        builder.show();
+        /*Intent intent = new Intent(this, TitlescreenActivity.class);
+        startActivity(intent);*/
     }
 
 

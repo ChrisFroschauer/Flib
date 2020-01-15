@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -51,7 +52,7 @@ public class GameOverActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_over_activity);
+        setContentView(R.layout.activity_game_over);
 
         // prefs:
         prefs = getSharedPreferences(HIGHSCORE, MODE_PRIVATE);
@@ -85,7 +86,7 @@ public class GameOverActivity extends AppCompatActivity {
                 new Handler().post(() -> enterHighscore(shorthandName.getText().toString(), score, isTimerace));
 
                 // Intent to go to Highscore Activity:
-                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                imm.hideSoftInputFromWindow(shorthandName.getWindowToken(), 0);
                 Intent intent = new Intent(this, HighscoreActivity.class);
                 intent.putExtra(INTENT_TIMERACE, isTimerace);
                 startActivity(intent);

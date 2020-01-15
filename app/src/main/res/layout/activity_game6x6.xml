@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".views.game.GameActivity">
 
-    <include layout="@layout/activity_game_top_info"></include>
+    <include layout="@layout/layout_activity_game_top_info"></include>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/game_board_container"

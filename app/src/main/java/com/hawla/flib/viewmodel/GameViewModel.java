@@ -25,6 +25,7 @@ import static com.hawla.flib.views.settings.PatternPickPreference.PICKPATTERN_TA
 public class GameViewModel extends AndroidViewModel {
 
     private final int INCREASE_TURNS = 5;
+    private final Random random = new Random();
 
     private MutableLiveData<List<List<Boolean>>> gameBoard;
     private List<List<Boolean>> currentStartBoard;
@@ -34,10 +35,12 @@ public class GameViewModel extends AndroidViewModel {
     private MutableLiveData<Integer> currentTurnsLeft;
     private MutableLiveData<Integer> currentHeartsLeft;
     private MutableLiveData<Integer> currentLevel;
-    private MutableLiveData<Integer> currentScore;
     private MutableLiveData<DialogValue> showDialog;
+    private int currentScore;
+    private int comboBonus = 0;
+    private int patternCount;
 
-    // Fixed Settings:
+    // from settings Settings:
     private int gameSize;
     private int totalTurns;
     private boolean areIncreasing;
@@ -72,10 +75,6 @@ public class GameViewModel extends AndroidViewModel {
         return currentLevel;
     }
 
-    public void setTimerace(boolean timerace){
-        this.isTimerace = timerace;
-    }
-
     public void clickOnField(int x, int y){
         applyPatternOn(x, y);
 
@@ -85,30 +84,14 @@ public class GameViewModel extends AndroidViewModel {
             turnsLeft -= 1;
             currentTurnsLeft.setValue(turnsLeft);
             if(isSolved()){
-                int tempNextLevel = currentLevel.getValue().intValue() + 1;
-                if (tempNextLevel % INCREASE_TURNS == 0 && totalTurns < gameSize*gameSize){
-                    showDialog.setValue(new DialogValue(R.string.level_up,
-                            currentLevel.getValue() + 1, CustomInfoDialog.DialogType.LEVEL_UP, R.string.are_increasing));
-                }else{
-                    showDialog.setValue(new DialogValue(R.string.level_up,
-                            currentLevel.getValue() + 1, CustomInfoDialog.DialogType.LEVEL_UP));
-                }
-                new Handler().postDelayed(()-> nextLevel(), 1000);
+                prepareNextLevel();
                 return;
             }
         }else {
             // end round / lose heart / increase level
             currentTurnsLeft.setValue(0);
             if(isSolved()){
-                int tempNextLevel = currentLevel.getValue().intValue() + 1;
-                if (tempNextLevel % INCREASE_TURNS == 0 && totalTurns < gameSize*gameSize){
-                    showDialog.setValue(new DialogValue(R.string.level_up,
-                            currentLevel.getValue() + 1, CustomInfoDialog.DialogType.LEVEL_UP, R.string.are_increasing));
-                }else{
-                    showDialog.setValue(new DialogValue(R.string.level_up,
-                            currentLevel.getValue() + 1, CustomInfoDialog.DialogType.LEVEL_UP));
-                }
-                new Handler().postDelayed(()-> nextLevel(), 1000);
+                prepareNextLevel();
                 return;
             }
             // Losing a heart:
@@ -130,6 +113,89 @@ public class GameViewModel extends AndroidViewModel {
         }
     }
 
+    private void prepareNextLevel() {
+        int tempNextLevel = currentLevel.getValue().intValue() + 1;
+        if (areIncreasing && tempNextLevel % INCREASE_TURNS == 0 && totalTurns < gameSize * gameSize) {
+            showDialog.setValue(new DialogValue(R.string.level_up,
+                    currentLevel.getValue() + 1, CustomInfoDialog.DialogType.LEVEL_UP, R.string.are_increasing));
+        } else {
+            showDialog.setValue(new DialogValue(R.string.level_up,
+                    currentLevel.getValue() + 1, CustomInfoDialog.DialogType.LEVEL_UP));
+        }
+        new Handler().postDelayed(() -> nextLevel(), 1000);
+    }
+
+    private void nextLevel() {
+        // score:
+        currentScore += calculateScoreForCurrLevel();
+        Log.i("CURRENTSCORE", + currentScore +"");
+        // combo:
+        comboBonus++;
+        // level up
+        int nextLevel = currentLevel.getValue().intValue() + 1;
+        currentLevel.setValue(nextLevel);
+        if (areIncreasing && nextLevel % INCREASE_TURNS == 0 && totalTurns < gameSize * gameSize){
+            totalTurns += 1;
+        }
+        // reset turnsLeft
+        currentTurnsLeft.setValue(totalTurns);
+        // make new Gameboard
+        createGameBoard();
+    }
+
+    private int calculateScoreForCurrLevel() {
+        // ####### gameSize ##############
+        // it feels like it is this weird sequence from hardest to easiest:
+        // 4x4 >= 3x3 > 5x5 > 6x6 > 7x7
+        int scoreForCurrLevel = 1;
+        if (gameSize == 3 || gameSize == 4){
+            scoreForCurrLevel += 2;
+        }else if(gameSize == 5 || gameSize == 6){
+            scoreForCurrLevel += 1;
+        }// no multiplicator for 7x7
+
+        // ####### TotalTurns (+ areIncreasing) ###########
+        // higher turns make it obviously way harder! so this has to be a high multiplicator
+        // also areIncreasing is included since the totalTurns-Objectvariable gets increased
+        // totalTurns == 1 means no points!
+        if (totalTurns == 1){
+            return 0;
+        }else if (totalTurns == 2){
+            return scoreForCurrLevel = 1;
+        }
+        scoreForCurrLevel += totalTurns*2;
+
+        // ####### hearts ################
+        // obiously more hearts gives a higher chance to proceed
+        // but i don't think its that much an advantage
+        // i propose: totalhearts: 5 -> 0, 4 total -> +1, ... 1 total -> +4
+        scoreForCurrLevel += (5-totalHearts);
+
+        // ####### heart comboBonus ###########
+        // multiple rounds without loosing a heart -> get comboBonus
+        scoreForCurrLevel += comboBonus/2;
+
+        // ####### pattern ###############
+        // obviously less set pattern-fields are kinda easier. E.g. 1 pattern field would be trivial.
+        // But also a pattern with 6 can be easier for a human than a pattern with 5...
+        // even though of a higher chance of collisions
+        // 4 fields -> +0, 5 fields -> +1... 7 fields -> +2, ... 9 fields -> +2 (standard case)
+        if (patternCount == 1) {
+            return 0;
+        }else if (patternCount <= 4) {
+            scoreForCurrLevel -= (4 - patternCount)*5; // sanction very low patternCounts harshly.
+        }else if (patternCount <= 6){
+            scoreForCurrLevel += 1;
+        }else{
+            scoreForCurrLevel += 2;
+        }
+
+        // End calc: Random, check for a sub 0 score
+        scoreForCurrLevel += (2 - random.nextInt(4));
+        if (scoreForCurrLevel <= 0) scoreForCurrLevel = 0;
+        return scoreForCurrLevel;
+    }
+
     private boolean isSolved() {
         List<List<Boolean>> currGameBoard = gameBoard.getValue();
         boolean isSolved = true;
@@ -142,6 +208,9 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     private void restartLevel() {
+        // reset comboBonus:
+        comboBonus = 0;
+
         // Copy currentStartBoard for restarting:
         List<List<Boolean>> temp = new ArrayList<>();
         for (int i = 0; i < gameSize; i++){
@@ -154,20 +223,9 @@ public class GameViewModel extends AndroidViewModel {
         currentTurnsLeft.setValue(totalTurns);
     }
 
-    private void nextLevel() {
-        int nextLevel = currentLevel.getValue().intValue() + 1;
-        currentLevel.setValue(nextLevel);
-        if (nextLevel % INCREASE_TURNS == 0 && totalTurns < gameSize*gameSize){
-            totalTurns += 1;
-        }
-        currentTurnsLeft.setValue(totalTurns);
-        createGameBoard();
-    }
-
     public void gameOver() {
         showDialog.setValue(new DialogValue(R.string.lose_game,
-                0, CustomInfoDialog.DialogType.GAME_OVER));
-        // TODO: Intent to gameover activity
+                currentScore, CustomInfoDialog.DialogType.GAME_OVER));
     }
 
     private void loadFromSettings() {
@@ -178,8 +236,7 @@ public class GameViewModel extends AndroidViewModel {
         showDialog.setValue(new DialogValue(0, 0, CustomInfoDialog.DialogType.INVISIBLE));
         currentLevel = new MutableLiveData<>();
         currentLevel.setValue(1);
-        currentScore = new MutableLiveData<>();
-        currentScore.setValue(0);
+        currentScore = 0;
 
         // Load board size:
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplication());
@@ -216,6 +273,14 @@ public class GameViewModel extends AndroidViewModel {
             patternList.add(curr);
         }
         this.pattern = patternList;
+
+        // count pattern:
+        patternCount = 0;
+        for(boolean flip: pattern){
+            if (flip){
+                patternCount++;
+            }
+        }
     }
 
     private void createGameBoard() {
@@ -325,7 +390,7 @@ public class GameViewModel extends AndroidViewModel {
                         }
                         break;
                     case 4:
-                        Log.i("applyPatternOn 4", "x: " + (x) + " y: " + (y));
+                        //Log.i("applyPatternOn 4", "x: " + (x) + " y: " + (y));
                         x_now = x;
                         y_now = y;
                         if (x_now >= 0 && x_now < gameSize
@@ -384,7 +449,6 @@ public class GameViewModel extends AndroidViewModel {
             }
         }
         gameBoard.setValue(currBoard);
-        //return result;
     }
 
 
