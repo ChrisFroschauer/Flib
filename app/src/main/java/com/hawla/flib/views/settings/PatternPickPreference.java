@@ -3,6 +3,7 @@ package com.hawla.flib.views.settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -29,9 +30,6 @@ public class PatternPickPreference extends Preference {
     private List<Button> patternButtons;
 
     private List<Boolean> pattern;
-    /*private Boolean[] DEFAULT_PATTERN = {true, true, true,
-                                        true, true, true,
-                                        true, true, true};*/
 
     public PatternPickPreference(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
@@ -39,6 +37,7 @@ public class PatternPickPreference extends Preference {
 
     public PatternPickPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        //new Handler().post(()->preferencesPatternPick = context.getSharedPreferences("PickPattern", Context.MODE_PRIVATE));
         preferencesPatternPick = context.getSharedPreferences("PickPattern", Context.MODE_PRIVATE);
         //setWidgetLayoutResource(R.layout.pattern_picker_preference);
         //setLayoutResource(R.layout.pattern_picker_preference);
@@ -47,6 +46,15 @@ public class PatternPickPreference extends Preference {
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
+
+        initPatternButtons(holder);
+        loadSavedPattern();
+        /*new Handler().post(()->{
+
+        });*/
+    }
+
+    private void initPatternButtons(PreferenceViewHolder holder) {
         holder.itemView.setClickable(false); // disable parent click
 
         patternButtons = new ArrayList<>();
@@ -77,13 +85,11 @@ public class PatternPickPreference extends Preference {
                     //SharedPreferences sharedPreferences = getSharedPreferences();
                     SharedPreferences.Editor editor = preferencesPatternPick.edit();
                     editor.putBoolean(PICKPATTERN_TAG + i, value);
-                    editor.commit();
+                    editor.apply();
                 }
 
             });
         }
-
-        loadSavedPattern();
     }
 
     private void loadSavedPattern() {
@@ -92,7 +98,7 @@ public class PatternPickPreference extends Preference {
         List<Boolean> patternList = new ArrayList<>();
         for (int i = 0; i < 9; i++){
             boolean curr = preferencesPatternPick.getBoolean(PICKPATTERN_TAG +i,true);
-            Log.i("TestCustomPref", i+": " + preferencesPatternPick.getBoolean(PICKPATTERN_TAG +i,true) );
+            //Log.i("TestCustomPref", i+": " + preferencesPatternPick.getBoolean(PICKPATTERN_TAG +i,true) );
             patternList.add(curr);
             togglePickPatternButton(patternButtons.get(i), curr);
         }

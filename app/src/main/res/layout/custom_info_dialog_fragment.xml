@@ -35,4 +35,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialog_main_text" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="231dp"
+        android:layout_height="326dp"
+        android:alpha="1.0"
+        app:layout_constraintBottom_toTopOf="@+id/dialog_main_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

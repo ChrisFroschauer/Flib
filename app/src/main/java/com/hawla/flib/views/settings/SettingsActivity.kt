@@ -3,6 +3,7 @@ package com.hawla.flib.views.settings
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.text.InputType
 import android.util.Log
 import android.view.View
@@ -27,13 +28,16 @@ class SettingsActivity : AppCompatActivity(){
         setContentView(R.layout.settings_activity)
 
         // init Preferences
-        supportFragmentManager
-            .beginTransaction()
-            .replace(
-                R.id.settings,
-                SettingsFragment()
-            )
-            .commit()
+        Handler().post {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(
+                    R.id.settings,
+                    SettingsFragment()
+                )
+                .commit()
+        }
+
 
         // Up button to parent
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

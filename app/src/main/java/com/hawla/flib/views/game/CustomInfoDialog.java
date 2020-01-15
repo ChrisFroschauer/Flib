@@ -1,10 +1,12 @@
 package com.hawla.flib.views.game;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -17,6 +19,7 @@ public class CustomInfoDialog extends DialogFragment {
     private String subText = "";
     private TextView textView;
     private TextView subTextView;
+    private ImageView imageView;
     private ProgressBar progressBar;
     private DialogType type;
 
@@ -50,6 +53,7 @@ public class CustomInfoDialog extends DialogFragment {
         subTextView = view.findViewById(R.id.dialog_sub_text);
         subTextView.setText(subText);
         progressBar = view.findViewById(R.id.dialog_progress_bar);
+        imageView = view.findViewById(R.id.image);
 
         //---set the title for the dialog
         getDialog().setTitle(mainText);
@@ -59,6 +63,10 @@ public class CustomInfoDialog extends DialogFragment {
 
     public ProgressBar getProgressBar(){
         return progressBar;
+    }
+
+    public ImageView getImageView(){
+        return imageView;
     }
 
     @Override

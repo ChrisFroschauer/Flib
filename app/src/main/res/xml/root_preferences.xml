@@ -28,7 +28,8 @@
             app:entries="@array/game_size_human"
             app:entryValues="@array/game_size_data"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="3"/>
+            app:defaultValue="3"
+            app:icon="@drawable/icon_game_size_white_24dp"/>
 
         <ListPreference
             app:key="turns"
@@ -36,13 +37,15 @@
             app:entries="@array/turns_data"
             app:entryValues="@array/turns_data"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="3"/>
+            app:defaultValue="3"
+            app:icon="@drawable/icon_turns_white_24dp"/>
 
         <SwitchPreferenceCompat
             app:key="are_increasing"
             app:title="@string/are_increasing"
             app:summaryOn="@string/are_increasing_summary_on"
-            app:summaryOff="@string/are_increasing_summary_off"/>
+            app:summaryOff="@string/are_increasing_summary_off"
+            app:icon="@drawable/icon_increasing_white_24dp"/>
 
         <ListPreference
             app:key="hearts"
@@ -50,7 +53,8 @@
             app:entries="@array/hearts_data"
             app:entryValues="@array/hearts_data"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="3"/>
+            app:defaultValue="3"
+            app:icon="@drawable/icon_heart_white_24dp"/>
 
 <!--        <Preference-->
 <!--            app:key="game_time"-->
@@ -63,7 +67,8 @@
             app:entries="@array/game_time_data"
             app:entryValues="@array/game_time_data"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="2:00"/>
+            app:defaultValue="2:00"
+            app:icon="@drawable/icon_time_white_24dp"/>
 
 <!--        <NumberPickerPreference-->
 <!--            app:key="game_time_number"-->
@@ -98,7 +103,8 @@
         <Preference
             app:key="version"
             app:title="@string/version"
-            app:summary="1.0.0"/><!-- TODO: app version from manifest/gradle or smth.-->
+            app:summary="1.0.0"
+            app:icon="@drawable/icon_info_white_24dp"/><!-- TODO: app version from manifest/gradle or smth.-->
 
     </PreferenceCategory>
 <!-- generated

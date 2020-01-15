@@ -7,17 +7,21 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.preference.PreferenceManager;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hawla.flib.R;
 import com.hawla.flib.viewmodel.GameViewModel;
+import com.hawla.flib.views.gameover.GameOverActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +32,8 @@ public class GameActivity extends AppCompatActivity {
 
     public static final String INTENT_TIMERACE = "TIMERACE";
     public static final boolean INTENT_TIMERACE_DEFAULT = false;
+    public static final String INTENT_SCORE = "SCORE";
+    public static final int INTENT_SCORE_DEFAULT = 0;
     public static final String GAME_SIZE = "game_size";
     public static final String GAME_SIZE_DEFAULT = "3";
     public static final String DIALOG_TAG = "dialog_tag";
@@ -44,6 +50,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView heartsLeftTextView;
     private TextView levelTextView;
     private TextView timeTextView;
+    private List<ImageView> heartsImages;
     private int counter;
 
     private GameViewModel model;
@@ -110,12 +117,44 @@ public class GameActivity extends AppCompatActivity {
         model.getCurrentHeartsLeft().observe(this, hearts -> {
             // react to heart change:
             Log.i("hearts changed", " hearts: " + hearts);
-            heartsLeftTextView.setText(hearts + " " + getString(R.string.hearts_left));
+            switch(hearts){
+                case 0:
+                    heartsLeftTextView.setText(getString(R.string.no_hearts));
+                    heartsImages.get(0).setAlpha(0.0f);
+                    heartsImages.get(1).setAlpha(0.0f);
+                    heartsImages.get(2).setAlpha(0.0f);
+                case 1:
+                    heartsLeftTextView.setText("");
+                    heartsImages.get(0).setAlpha(1.0f);
+                    heartsImages.get(1).setAlpha(0.0f);
+                    heartsImages.get(2).setAlpha(0.0f);
+                    break;
+                case 2:
+                    heartsLeftTextView.setText("");
+                    heartsImages.get(0).setAlpha(1.0f);
+                    heartsImages.get(1).setAlpha(1.0f);
+                    heartsImages.get(2).setAlpha(0.0f);
+                    break;
+                case 3:
+                    heartsLeftTextView.setText("");
+                    heartsImages.get(0).setAlpha(1.0f);
+                    heartsImages.get(1).setAlpha(1.0f);
+                    heartsImages.get(2).setAlpha(1.0f);
+                    break;
+                default:
+                    heartsLeftTextView.setText(hearts+"");
+                    heartsImages.get(0).setAlpha(1.0f);
+                    heartsImages.get(1).setAlpha(0.0f);
+                    heartsImages.get(2).setAlpha(0.0f);
+                    break;
+            }
+
+
         });
         model.getCurrentLevel().observe(this, level -> {
             // react to level change:
             Log.i("levels changed", " level: " + level);
-            levelTextView.setText(getString(R.string.current_level) + ": " + level);
+            levelTextView.setText(getString(R.string.current_level).toUpperCase() + " " + level);
         });
         model.getShowDialog().observe(this, dialogValue -> {
             // react to possible showing dialog:
@@ -124,8 +163,8 @@ public class GameActivity extends AppCompatActivity {
                 FragmentManager fm = getSupportFragmentManager();
                 CustomInfoDialog dialog = new CustomInfoDialog();
                 if (dialogValue.getType() == CustomInfoDialog.DialogType.LEVEL_UP){
-                    dialog.setDialogMainText(getString(dialogValue.getMessageId()) + " " + dialogValue.getValue());
-                }else{
+                    dialog.setDialogMainText(getString(dialogValue.getMessageId()).toUpperCase() + " " + dialogValue.getValue());
+                }else {
                     dialog.setDialogMainText(getString(dialogValue.getMessageId()) );
                 }
                 if (dialogValue.hasSubMessage()){
@@ -141,8 +180,21 @@ public class GameActivity extends AppCompatActivity {
                     anim.setDuration(2000);
                     dialog.getProgressBar().startAnimation(anim);
                 });
-                // close dialog after x sec:
-                new Handler().postDelayed(() -> dialog.dismiss(), 2000);
+
+                // GameOver Intent?
+                if (dialogValue.getType() == CustomInfoDialog.DialogType.GAME_OVER) {
+                    new Handler().postDelayed(() -> {
+                        Intent intent = new Intent(this, GameOverActivity.class);
+                        intent.putExtra(INTENT_SCORE, 100);
+                        intent.putExtra(INTENT_TIMERACE, isTimerace);
+                        startActivity(intent);
+                    }, 2000);
+                }else {
+                    // close dialog after x sec:
+                    new Handler().postDelayed(() -> {
+                        dialog.dismiss();
+                    }, 2000);
+                }
             }
         });
 
@@ -161,6 +213,10 @@ public class GameActivity extends AppCompatActivity {
         turnsLeftTextView = findViewById(R.id.turns_text_view);
         heartsLeftTextView = findViewById(R.id.hearts_text_view);
         levelTextView = findViewById(R.id.level_text_view);
+        heartsImages = new ArrayList<>();
+        heartsImages.add(findViewById(R.id.hearts_picture_1));
+        heartsImages.add(findViewById(R.id.hearts_picture_2));
+        heartsImages.add(findViewById(R.id.hearts_picture_3));
 
         timeTextView = findViewById(R.id.time_text_view);
         if (isTimerace) {

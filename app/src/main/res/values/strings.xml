@@ -63,6 +63,7 @@
     <!-- in game -->
     <string name="turns_left">turns left</string>
     <string name="hearts_left">hearts left</string>
+    <string name="no_hearts">no hearts left</string>
     <string name="infinite">∞</string>
 
     <!-- dialog -->
@@ -70,5 +71,11 @@
     <string name="lose_game">Game Over</string>
     <string name="level_up">Level</string>
     <string name="current_level">Level</string>
+
+    <!-- gamover and highscore activity -->
+    <string name="game_over">Game Over</string>
+    <string name="score">Score:</string>
+    <string name="highscore_placeholder">AAA</string>
+    <string name="enter_name">Enter Name:</string>
 
 </resources>

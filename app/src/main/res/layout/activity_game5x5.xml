@@ -6,60 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".views.game.GameActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/top_info_container"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/game_board_container">
 
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_left_of_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.95" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_left_of_hearts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.05" />
-
-        <TextView
-            android:id="@+id/time_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/infinite"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintBottom_toTopOf="@+id/hearts_text_view"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_left_of_time"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/hearts_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="hearts placeholder"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintStart_toStartOf="@id/guideline_left_of_hearts"
-            app:layout_constraintTop_toBottomOf="@id/time_text_view"
-            app:layout_constraintBottom_toTopOf="@id/turns_text_view"
-            tools:layout_editor_absoluteY="46dp" />
-
-        <TextView
-            android:id="@+id/turns_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="turns placeholder"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/guideline_left_of_hearts"
-            app:layout_constraintTop_toBottomOf="@+id/hearts_text_view" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/activity_game_top_info"></include>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/game_board_container"
