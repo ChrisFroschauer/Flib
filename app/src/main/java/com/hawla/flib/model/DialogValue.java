@@ -1,4 +1,4 @@
-package com.hawla.flib.viewmodel.entities;
+package com.hawla.flib.model;
 
 import com.hawla.flib.views.game.CustomInfoDialog;
 

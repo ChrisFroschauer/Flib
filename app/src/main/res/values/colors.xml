@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#F9A159</color>
+    <color name="colorPrimary">#EBD59D</color>
     <color name="colorPrimaryDark">#615643</color>
-    <color name="colorAccent">#EBD59D</color>
+    <color name="colorAccent">#D34D4C</color>
 
     <!-- own colors:
 
@@ -20,6 +20,9 @@ EBD59D
 
     <color name="colorBackground">#555</color>
     <color name="colorDarkText">#444</color>
+
+    <color name="colorOnAccentNotSelected">#615643</color>
+    <color name="colorOnAccentSelected">#D34D4C</color>
 
     <color name="hintOnAccent">#fff</color>
     <color name="cursorOnAccent">#D34D4C</color>

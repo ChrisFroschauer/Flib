@@ -14,12 +14,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.hawla.flib.R;
+import com.hawla.flib.model.HighscoreEntry;
+import com.hawla.flib.views.highscore.HighscoreActivity;
 import com.hawla.flib.views.titlescreen.TitlescreenActivity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static com.hawla.flib.views.game.GameActivity.INTENT_SCORE;
 import static com.hawla.flib.views.game.GameActivity.INTENT_SCORE_DEFAULT;
@@ -86,7 +86,8 @@ public class GameOverActivity extends AppCompatActivity {
 
                 // Intent to go to Highscore Activity:
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-                Intent intent = new Intent(this, TitlescreenActivity.class); //TODO Highscore activity
+                Intent intent = new Intent(this, HighscoreActivity.class);
+                intent.putExtra(INTENT_TIMERACE, isTimerace);
                 startActivity(intent);
             }
         });
@@ -164,7 +165,7 @@ public class GameOverActivity extends AppCompatActivity {
             }
         }
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("TOP10_ENDLESS", value);
+        editor.putString(prefKey, value);
         editor.apply();
     }
 }

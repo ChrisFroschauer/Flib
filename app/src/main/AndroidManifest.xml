@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.gameover.GameOverActivity"></activity>
+        <activity
+            android:name=".views.highscore.HighscoreActivity"
+            android:label="@string/highscore"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".views.gameover.GameOverActivity" />
         <activity
             android:name=".views.game.GameActivity"
             android:screenOrientation="portrait" />

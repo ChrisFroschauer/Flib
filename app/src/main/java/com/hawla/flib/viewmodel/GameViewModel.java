@@ -3,7 +3,6 @@ package com.hawla.flib.viewmodel;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
 
@@ -14,7 +13,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.preference.PreferenceManager;
 
 import com.hawla.flib.R;
-import com.hawla.flib.viewmodel.entities.DialogValue;
+import com.hawla.flib.model.DialogValue;
 import com.hawla.flib.views.game.CustomInfoDialog;
 
 import java.util.ArrayList;

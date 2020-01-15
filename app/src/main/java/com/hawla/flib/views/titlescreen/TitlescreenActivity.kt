@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.content.Intent
+import android.text.Html
+import android.widget.TextView
 import com.hawla.flib.R
 import com.hawla.flib.views.game.GameActivity
+import com.hawla.flib.views.highscore.HighscoreActivity
 import com.hawla.flib.views.settings.SettingsActivity
 
 
@@ -15,6 +18,12 @@ class TitlescreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.title_screen)
 
+        // Logo text color:
+        val title: TextView  = findViewById(R.id.title)
+        val first: String = "Fli"
+        val second: String = "<font color='#D34D4C'>b</font>"
+        title.text = Html.fromHtml(first + second, Html.FROM_HTML_MODE_COMPACT)
+
         // Endless Button Functions
         val buttonEndless : Button = findViewById(R.id.start_endless)
         buttonEndless.setOnClickListener{
@@ -23,7 +32,7 @@ class TitlescreenActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Endless Button Functions
+        // timerace Button Functions
         val buttonTimeRace : Button = findViewById(R.id.start_timerace)
         buttonTimeRace.setOnClickListener{
             val intent = Intent(this, GameActivity::class.java)
@@ -31,6 +40,12 @@ class TitlescreenActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // highscore button
+        val buttonHighscore : Button = findViewById(R.id.show_highscore)
+        buttonHighscore.setOnClickListener{
+            val intent = Intent(this, HighscoreActivity::class.java)
+            startActivity(intent)
+        }
 
         // Setting Button Functions
         val buttonOptions : Button = findViewById(R.id.show_options)

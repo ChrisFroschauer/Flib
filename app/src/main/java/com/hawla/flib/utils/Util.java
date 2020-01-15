@@ -1,4 +1,4 @@
-package com.hawla.flib.helpers;
+package com.hawla.flib.utils;
 
 public class Util {
 

@@ -1,4 +1,4 @@
-package com.hawla.flib.views.settings.helper
+package com.hawla.flib.utils
 
 import android.text.InputFilter
 import android.text.Spanned

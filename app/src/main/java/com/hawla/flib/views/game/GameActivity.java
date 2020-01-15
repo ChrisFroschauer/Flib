@@ -9,11 +9,10 @@ import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.Html;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,7 +25,7 @@ import com.hawla.flib.views.gameover.GameOverActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.hawla.flib.helpers.Util.fillIntegerTwoDigits;
+import static com.hawla.flib.utils.Util.fillIntegerTwoDigits;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -223,7 +222,14 @@ public class GameActivity extends AppCompatActivity {
             new CountDownTimer((counter+1) * MILLIS_PER_SECOND, MILLIS_PER_SECOND) {
                 @Override
                 public void onTick(long millisUntilFinished) {
-                    timeTextView.setText(String.valueOf((int)(counter/60)) + SEPARATOR_NORMAL + fillIntegerTwoDigits(counter%60));
+                    String timerString = (int) (counter / 60) + SEPARATOR_NORMAL + fillIntegerTwoDigits(counter % 60);
+                    if (counter <= 10){
+                        String start = "<font color='#D34D4C'>";
+                        String end = "</font>";
+                        timeTextView.setText( Html.fromHtml(start + timerString + end, Html.FROM_HTML_MODE_COMPACT));
+                    }else {
+                        timeTextView.setText(timerString);
+                    }
                     //timeTextView.setText(String.valueOf((int)(counter/60)) + SEPARATOR_EMPTY + String.valueOf(counter%60));
                     counter--;
                 }
