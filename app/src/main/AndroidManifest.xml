@@ -4,17 +4,37 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_flib_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon_flib_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.game.LoadGameActivity"></activity>
+        <activity android:name=".views.training.TrainingActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".views.training.LoadTrainingActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".views.titlescreen.LaunchAnimationActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.game.LoadGameActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".views.highscore.HighscoreActivity"
             android:label="@string/highscore"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".views.gameover.GameOverActivity" />
+        <activity
+            android:name=".views.gameover.GameOverActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".views.game.GameActivity"
             android:screenOrientation="portrait" />
@@ -29,13 +49,7 @@
         </activity>
         <activity
             android:name=".views.titlescreen.TitlescreenActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

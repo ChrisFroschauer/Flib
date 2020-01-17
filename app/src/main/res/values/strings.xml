@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Flib</string>
+    <string name="app_version" translatable="false">1.0.0</string>
 
 
     <string name="endless_mode">Endless</string>
@@ -49,6 +50,13 @@
         <item>5</item>
     </string-array>
     <string name="game_time">Time</string>
+    <string-array name="game_time_human">
+        <item>1:00 minute</item>
+        <item>2:00 minutes</item>
+        <item>3:00 minutes</item>
+        <item>4:00 minutes</item>
+        <item>5:00 minutes</item>
+    </string-array>
     <string-array name="game_time_data">
         <item>1:00</item>
         <item>2:00</item>
@@ -62,7 +70,6 @@
 
     <!-- in game -->
     <string name="turns_left">turns left</string>
-    <string name="hearts_left">hearts left</string>
     <string name="no_hearts">no hearts left</string>
     <string name="infinite">∞</string>
 
@@ -75,18 +82,33 @@
     <!-- gamover and highscore activity -->
     <string name="game_over">Game Over</string>
     <string name="score">Score:</string>
-    <string name="highscore_placeholder">AAA</string>
     <string name="enter_name">Enter Name:</string>
 
     <!-- leave game dialog -->
     <string name="leave_dialog_title">Do you want to leave the current game?</string>
-    <string name="leave_dialog_message">If you leave the current state of the game gets lost.</string>
-    <string name="leave_dialog_positive">yes, leave</string>
-    <string name="leave_dialog_negative">no, keep playing</string>
+    <string name="leave_dialog_positive">leave</string>
+    <string name="leave_dialog_negative">keep playing</string>
 
     <!-- loading text -->
     <string name="loading_1">mixing some patterns</string>
     <string name="loading_2">baking a cake</string>
     <string name="loading_3">feeding the sheeps</string>
 
+    <!-- explanation dialog -->
+    <string name="explanation_title">Quickstart</string>
+    <string name="explanation_text1">You have a board and a pattern to manipulate the board.\nPress
+        on a field of the board to change the fields and its adjacent fields color according
+        to the Pattern.\n\nThe goal ist to change all fields to the color.\n\nThere is always the
+        possibility to solve the board with at most the total turns count.\nBut care if you lose
+        all your hearts or the time is running out the game will end.</string>
+    <string name="explanation_pattern">This is a possible pattern:</string>
+    <string name="explanation_pattern2">You can change the pattern, the board size and many things
+        more in the settings.\nCome and try it out\n\nHave Fun!</string>
+
+    <!-- Training -->
+    <string name="training_title">Training</string>
+    <string name="undo">Undo</string>
+
+    <!-- content descriptions -->
+    <string name="dialog_image">dialog image</string>
 </resources>

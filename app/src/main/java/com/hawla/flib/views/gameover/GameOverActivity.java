@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -30,6 +29,8 @@ import static com.hawla.flib.views.game.GameActivity.INTENT_TIMERACE_DEFAULT;
 public class GameOverActivity extends AppCompatActivity {
 
     public static final String HIGHSCORE = "HIGHSCORE";
+    public static final String LAST_ENTERED_NAME = "HS_NAME";
+    public static final String LAST_ENTERED_SCORE = "HS_VALUE";
     public static final String DEFAULT_SCORES =
             "COM-10,COM-20,COM-30," +
             "COM-40,COM-50,COM-60," +
@@ -167,6 +168,8 @@ public class GameOverActivity extends AppCompatActivity {
         }
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(prefKey, value);
+        editor.putString(LAST_ENTERED_NAME, name);
+        editor.putInt(LAST_ENTERED_SCORE, score);
         editor.apply();
     }
 }

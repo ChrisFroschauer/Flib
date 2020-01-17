@@ -35,7 +35,7 @@ public class DialogValue {
         return subMessageId != null;
     }
 
-    public int getSubMessageId(){
+    public Integer getSubMessageId(){
         return subMessageId;
     }
     public CustomInfoDialog.DialogType getType(){

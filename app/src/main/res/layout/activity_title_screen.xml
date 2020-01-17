@@ -7,19 +7,48 @@
     tools:context=".views.titlescreen.TitlescreenActivity">
 
 
-    <TextView
-        android:id="@+id/title"
+    <Button
+        android:id="@+id/info_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/ic_question_circle_solid"
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/logo_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/top_guideline"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@id/top_guideline">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintEnd_toStartOf="@+id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/title"
+            app:srcCompat="@drawable/ic_flib_anim_6" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_guideline"
@@ -29,13 +58,12 @@
         app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ButtonContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title">
+        app:layout_constraintTop_toBottomOf="@+id/logo_container">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/horizontal_top"
@@ -50,70 +78,130 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.04" />
+            app:layout_constraintGuide_percent="0.05" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/vertical_mid"
+            android:id="@+id/vertical_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintGuide_percent="0.35" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/vertical_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.96" />
+            app:layout_constraintGuide_percent="0.95" />
 
         <Button
-            android:id="@+id/start_endless"
+            android:id="@+id/playfull_button11"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:backgroundTint="@color/enabledPattern"
-            android:text="@string/endless_mode"
-            android:textColor="@color/colorDarkText"
+            android:text=""
             app:layout_constraintDimensionRatio="1.0"
-            app:layout_constraintEnd_toStartOf="@id/vertical_mid"
-            app:layout_constraintStart_toStartOf="@+id/vertical_left"
-            app:layout_constraintTop_toTopOf="@+id/horizontal_top" />
-
+            app:layout_constraintEnd_toStartOf="@id/vertical_2"
+            app:layout_constraintStart_toEndOf="@+id/vertical_1"
+            app:layout_constraintTop_toBottomOf="@id/playfull_button01" />
 
         <Button
+            android:id="@+id/playfull_button00"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@id/vertical_1"
+            app:layout_constraintStart_toStartOf="@id/vertical_left"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_top" />
+
+        <ImageButton
             android:id="@+id/start_timerace"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:backgroundTint="@color/enabledPattern"
-            android:text="@string/timerace_mode"
-            android:textColor="@color/colorDarkText"
+            android:contentDescription="@string/timerace_mode"
+            android:src="@drawable/ic_stopwatch_solid"
             app:layout_constraintDimensionRatio="1.0"
             app:layout_constraintEnd_toStartOf="@+id/vertical_right"
-            app:layout_constraintStart_toEndOf="@id/vertical_mid"
+            app:layout_constraintStart_toEndOf="@id/vertical_2"
             app:layout_constraintTop_toTopOf="@+id/horizontal_top" />
 
         <Button
+            android:id="@+id/playfull_button01"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text=""
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_2"
+            app:layout_constraintStart_toEndOf="@+id/playfull_button00"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_top" />
+
+        <Button
+            android:id="@+id/playfull_button20"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text=""
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@id/vertical_1"
+            app:layout_constraintStart_toStartOf="@id/vertical_left"
+            app:layout_constraintTop_toBottomOf="@+id/start_endless" />
+
+        <Button
+            android:id="@+id/playfull_button12"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text=""
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@id/vertical_right"
+            app:layout_constraintStart_toEndOf="@+id/vertical_2"
+            app:layout_constraintTop_toBottomOf="@+id/start_timerace" />
+
+        <ImageButton
             android:id="@+id/show_highscore"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:backgroundTint="@color/enabledPattern"
+            android:contentDescription="@string/highscore"
+            android:src="@drawable/ic_clipboard_list_solid"
             android:text="@string/highscore"
             android:textColor="@color/colorDarkText"
             app:layout_constraintDimensionRatio="1.0"
-            app:layout_constraintEnd_toStartOf="@+id/vertical_mid"
-            app:layout_constraintStart_toStartOf="@+id/vertical_left"
-            app:layout_constraintTop_toBottomOf="@id/start_endless" />
+            app:layout_constraintEnd_toStartOf="@+id/vertical_2"
+            app:layout_constraintStart_toStartOf="@+id/vertical_1"
+            app:layout_constraintTop_toBottomOf="@id/playfull_button11" />
 
-        <Button
+        <ImageButton
+            android:id="@+id/start_endless"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/enabledPattern"
+            android:contentDescription="@string/endless_mode"
+            android:gravity="center"
+            android:src="@drawable/ic_gamepad_solid"
+            app:layout_constraintDimensionRatio="1.0"
+            app:layout_constraintEnd_toStartOf="@id/vertical_1"
+            app:layout_constraintStart_toStartOf="@+id/vertical_left"
+            app:layout_constraintTop_toBottomOf="@+id/playfull_button00" />
+
+        <ImageButton
             android:id="@+id/show_options"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:backgroundTint="@color/enabledPattern"
+            android:contentDescription="@string/options"
+            android:src="@drawable/ic_cog_solid"
             android:text="@string/options"
             android:textColor="@color/colorDarkText"
             app:layout_constraintDimensionRatio="1.0"
             app:layout_constraintEnd_toStartOf="@+id/vertical_right"
-            app:layout_constraintStart_toStartOf="@+id/vertical_mid"
-            app:layout_constraintTop_toBottomOf="@id/start_endless" />
+            app:layout_constraintStart_toStartOf="@+id/vertical_2"
+            app:layout_constraintTop_toBottomOf="@id/playfull_button12" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

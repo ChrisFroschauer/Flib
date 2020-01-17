@@ -20,7 +20,8 @@
     <PreferenceCategory
         app:key="general"
         app:title="@string/general_header"
-        app:iconSpaceReserved="false">
+        app:iconSpaceReserved="false"
+        app:allowDividerBelow="true">
 
         <ListPreference
             app:key="game_size"
@@ -64,7 +65,7 @@
         <ListPreference
             app:key="game_time"
             app:title="@string/game_time"
-            app:entries="@array/game_time_data"
+            app:entries="@array/game_time_human"
             app:entryValues="@array/game_time_data"
             app:useSimpleSummaryProvider="true"
             app:defaultValue="2:00"
@@ -103,8 +104,8 @@
         <Preference
             app:key="version"
             app:title="@string/version"
-            app:summary="1.0.0"
-            app:icon="@drawable/icon_info_white_24dp"/><!-- TODO: app version from manifest/gradle or smth.-->
+            app:summary="@string/app_version"
+            app:icon="@drawable/icon_info_white_24dp" />
 
     </PreferenceCategory>
 <!-- generated

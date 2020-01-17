@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.hawla.flib.R;
@@ -61,10 +63,12 @@ public class HighscoreTabFragment extends Fragment {
 
         shorthandsTextView = root.findViewById(R.id.shorthands_text_view);
         valuesTextView = root.findViewById(R.id.values_text_view);
-        highscoreViewModel.getText().observe(this, s -> {
+        highscoreViewModel.getText().observe( getViewLifecycleOwner(), s -> {
             if (shorthandsTextView != null){
-                shorthandsTextView.setText(s[0]);
-                valuesTextView.setText(s[1]);
+                shorthandsTextView.setText(Html.fromHtml(s[0], Html.FROM_HTML_MODE_COMPACT));
+                valuesTextView.setText(Html.fromHtml(s[1], Html.FROM_HTML_MODE_COMPACT));
+                //shorthandsTextView.setText(s[0]);
+                //valuesTextView.setText(s[1]);
             }else{
                 Log.w("setText FAILED", s[0]);
             }

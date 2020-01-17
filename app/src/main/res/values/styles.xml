@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <!--style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"-->
@@ -7,7 +7,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
 
         <!-- own -->
         <!--item name="android:colorBackground">@color/colorBackground</item-->
@@ -15,11 +15,18 @@
         <item name="android:statusBarColor">@android:color/background_dark</item>
     </style>
 
-    <!-- Activity transition animation -->
-    <style name="WindowAnimationTransition">
-        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
-        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+<!--     Activity transition animation -->
+<!--    <style name="WindowAnimationTransition">-->
+<!--        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>-->
+<!--        <item name="android:windowExitAnimation">@android:anim/fade_out</item>-->
+<!--    </style>-->
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/fade_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/fade_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/fade_out</item>
     </style>
+
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -27,7 +34,5 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

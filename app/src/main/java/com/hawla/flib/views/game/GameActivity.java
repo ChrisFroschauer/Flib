@@ -56,6 +56,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView timeTextView;
     private List<ImageView> heartsImages;
     private int counter;
+    private int totalMinutes;
 
     private GameViewModel model;
 
@@ -72,6 +73,7 @@ public class GameActivity extends AppCompatActivity {
             String[] splits = timer.split(":");
             Log.i("TIMERACE", splits[0] + " : " + splits[1]);
             counter = Integer.parseInt(splits[0])* 60 + Integer.parseInt(splits[1]);
+            totalMinutes = Integer.parseInt(splits[0]);
         }
 
         // INIT GAME_SIZE:
@@ -168,9 +170,14 @@ public class GameActivity extends AppCompatActivity {
                 CustomInfoDialog dialog = new CustomInfoDialog();
                 if (dialogValue.getType() == CustomInfoDialog.DialogType.LEVEL_UP){
                     dialog.setDialogMainText(getString(dialogValue.getMessageId()).toUpperCase() + " " + dialogValue.getValue());
-                }else {
+                }else if (dialogValue.getType() == CustomInfoDialog.DialogType.GAME_OVER){
+                    dialog.setDialogMainText(getString(dialogValue.getMessageId()) );
+                }else if (dialogValue.getType() == CustomInfoDialog.DialogType.LOSE_HEART){
+                    dialog.setDialogMainText(getString(dialogValue.getMessageId()) );
+                }else{
                     dialog.setDialogMainText(getString(dialogValue.getMessageId()) );
                 }
+
                 if (dialogValue.hasSubMessage()){
                     dialog.setDialogSubText(getString(dialogValue.getSubMessageId()));
                 }
@@ -189,7 +196,27 @@ public class GameActivity extends AppCompatActivity {
                 if (dialogValue.getType() == CustomInfoDialog.DialogType.GAME_OVER) {
                     new Handler().postDelayed(() -> {
                         Intent intent = new Intent(this, GameOverActivity.class);
-                        intent.putExtra(INTENT_SCORE, dialogValue.getValue());
+                        int score = dialogValue.getValue();
+
+                        // timerace score adjustment:
+                        if(isTimerace){
+                            switch(totalMinutes){
+                                case 1:
+                                    score *= 5;
+                                    break;
+                                case 2:
+                                    score *= 2.5;
+                                    break;
+                                case 3:
+                                    score *= 1.667;
+                                    break;
+                                case 4:
+                                    score *= 1.25;
+                                    break;
+                            }
+                        }
+
+                        intent.putExtra(INTENT_SCORE, score);
                         intent.putExtra(INTENT_TIMERACE, isTimerace);
                         startActivity(intent);
                     }, MILLIS_GAME_DIALOGS);
@@ -278,7 +305,7 @@ public class GameActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         Activity act = this;
         builder.setTitle(getString(R.string.leave_dialog_title));
-        builder.setMessage(getString(R.string.leave_dialog_message));
+        //builder.setMessage(getString(R.string.leave_dialog_message));
         builder.setPositiveButton(getString(R.string.leave_dialog_positive), (dialog, id) -> {
             Intent intent = new Intent(act, TitlescreenActivity.class);
             startActivity(intent);

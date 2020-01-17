@@ -17,19 +17,28 @@ import com.hawla.flib.model.DialogValue;
 import com.hawla.flib.views.game.CustomInfoDialog;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.Stack;
 
+import static com.hawla.flib.views.game.GameActivity.GAME_SIZE;
+import static com.hawla.flib.views.game.GameActivity.GAME_SIZE_DEFAULT;
 import static com.hawla.flib.views.settings.PatternPickPreference.PICKPATTERN_TAG;
 
 public class GameViewModel extends AndroidViewModel {
 
+    public static final String TURNS = "turns";
+    public static final String TURNS_DEFAULT = "3";
+    public static final String ARE_INCREASING = "are_increasing";
+    public static final boolean ARE_INCREASING_DEFAULT = false;
+    public static final String HEARTS = "hearts";
+    public static final String HEARTS_DEFAULT = "3";
     private final int INCREASE_TURNS = 5;
     private final Random random = new Random();
 
     private MutableLiveData<List<List<Boolean>>> gameBoard;
     private List<List<Boolean>> currentStartBoard;
-    //private MutableLiveData<Boolean> boardIsVisible;
 
     // Variable Members:
     private MutableLiveData<Integer> currentTurnsLeft;
@@ -46,7 +55,6 @@ public class GameViewModel extends AndroidViewModel {
     private boolean areIncreasing;
     private int totalHearts;
     private List<Boolean> pattern;
-    private boolean isTimerace;
 
 
     public GameViewModel(@NonNull Application application) {
@@ -61,7 +69,6 @@ public class GameViewModel extends AndroidViewModel {
         }
         return gameBoard;
     }
-
     public LiveData<Integer> getCurrentTurnsLeft() {
         return currentTurnsLeft;
     }
@@ -87,7 +94,7 @@ public class GameViewModel extends AndroidViewModel {
                 prepareNextLevel();
                 return;
             }
-        }else {
+        }else{
             // end round / lose heart / increase level
             currentTurnsLeft.setValue(0);
             if(isSolved()){
@@ -180,7 +187,7 @@ public class GameViewModel extends AndroidViewModel {
         // But also a pattern with 6 can be easier for a human than a pattern with 5...
         // even though of a higher chance of collisions
         // 4 fields -> +0, 5 fields -> +1... 7 fields -> +2, ... 9 fields -> +2 (standard case)
-        if (patternCount == 1) {
+        if (patternCount <= 1) {
             return 0;
         }else if (patternCount <= 4) {
             scoreForCurrLevel -= (4 - patternCount)*5; // sanction very low patternCounts harshly.
@@ -193,6 +200,7 @@ public class GameViewModel extends AndroidViewModel {
         // End calc: Random, check for a sub 0 score
         scoreForCurrLevel += (2 - random.nextInt(4));
         if (scoreForCurrLevel <= 0) scoreForCurrLevel = 0;
+
         return scoreForCurrLevel;
     }
 
@@ -240,12 +248,12 @@ public class GameViewModel extends AndroidViewModel {
 
         // Load board size:
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplication());
-        String gameSize = prefs.getString("game_size", "4");
+        String gameSize = prefs.getString(GAME_SIZE, GAME_SIZE_DEFAULT);
         Log.i("GameViewModel", gameSize + "x" + gameSize);
         this.gameSize = Integer.parseInt(gameSize);
 
         // Load total turns:
-        String totalTurns = prefs.getString("turns", "3");
+        String totalTurns = prefs.getString(TURNS, TURNS_DEFAULT);
         Log.i("GameViewModel", totalTurns + " turns");
         this.totalTurns = Integer.parseInt(totalTurns);
         if (this.totalTurns > 9){ //TODO: Total Turns with >= gameSize*gameSize is dumb isn't it?
@@ -254,12 +262,12 @@ public class GameViewModel extends AndroidViewModel {
         currentTurnsLeft.setValue(this.totalTurns);
 
         // Load increasing turns
-        boolean areIncreasing = prefs.getBoolean("are_increasing", false);
+        boolean areIncreasing = prefs.getBoolean(ARE_INCREASING, ARE_INCREASING_DEFAULT);
         Log.i("GameViewModel", " are Incresing: " + areIncreasing);
         this.areIncreasing = areIncreasing;
 
         // Load total hearts:
-        String totalHearts = prefs.getString("hearts", "3");
+        String totalHearts = prefs.getString(HEARTS, HEARTS_DEFAULT);
         Log.i("GameViewModel", totalTurns + " turns");
         this.totalHearts = Integer.parseInt(totalHearts);
         currentHeartsLeft.setValue(this.totalHearts);
@@ -274,7 +282,7 @@ public class GameViewModel extends AndroidViewModel {
         }
         this.pattern = patternList;
 
-        // count pattern:
+        // Count pattern: (for score calculation)
         patternCount = 0;
         for(boolean flip: pattern){
             if (flip){
@@ -284,10 +292,6 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     private void createGameBoard() {
-        // board is visible
-        /*boardIsVisible = new MutableLiveData<>();
-        boardIsVisible.setValue(false);*/
-
         // Init Arrays:
         List<List<Boolean>> board = new ArrayList<>();
         for (int i = 0; i < gameSize; i++){
@@ -301,21 +305,19 @@ public class GameViewModel extends AndroidViewModel {
 
         // Random init pattern:
         // turn times, with pattern, on random location, avoid double tapping
-        int curr_x;
-        int curr_y;
         // Possible Values:
-        boolean[][] notAvailable = new boolean[gameSize][gameSize]; // is init with false
-        for (int i = 0; i < totalTurns; i++){
-            Random rando = new Random();
-            curr_x = rando.nextInt(gameSize);
-            curr_y = rando.nextInt(gameSize);
-            // avoid double tapping the same field:
-            while(notAvailable[curr_x][curr_y] == true){
-                curr_x = rando.nextInt(gameSize);
-                curr_y = rando.nextInt(gameSize);
+        Stack<int[]> openFields = new Stack<>();
+        for (int i = 0; i < gameSize; i++){
+            for (int j = 0; j < gameSize; j++){
+                openFields.add(new int[]{i, j});
             }
-            applyPatternOn(curr_x, curr_y);
-            notAvailable[curr_x][curr_y] = true;
+        }
+        // Shuffel:
+        Collections.shuffle(openFields, random);
+        int[] curr;
+        for (int i = 0; i < totalTurns && i < gameSize*gameSize; i++){
+            curr = openFields.pop();
+            applyPatternOn(curr[0], curr[1]);
         }
 
         // Copy currentStartBoard for restarting:
@@ -327,8 +329,6 @@ public class GameViewModel extends AndroidViewModel {
                 currentStartBoard.get(i).add(temp.get(i).get(j));
             }
         }
-
-        /*boardIsVisible.setValue(true);*/
     }
 
     // this method changes the gameField without affecting turns, etc...

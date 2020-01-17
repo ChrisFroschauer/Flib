@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/game_board_container"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toTopOf="@+id/guideline"
+    app:layout_constraintDimensionRatio="H,1:1"
+    app:layout_constraintTop_toBottomOf="@id/top_info_container"
+    tools:showIn="@layout/activity_game5x5">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <!-- first row -->
+    <Button
+        android:id="@+id/gamefield_button00"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_1"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/guideline_top" />
+
+    <Button
+        android:id="@+id/gamefield_button01"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_2"
+        app:layout_constraintStart_toEndOf="@+id/gamefield_button00"
+        app:layout_constraintTop_toBottomOf="@id/guideline_top" />
+
+    <Button
+        android:id="@+id/gamefield_button02"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_3"
+        app:layout_constraintStart_toEndOf="@+id/gamefield_button01"
+        app:layout_constraintTop_toBottomOf="@id/guideline_top" />
+
+    <Button
+        android:id="@+id/gamefield_button03"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_4"
+        app:layout_constraintStart_toEndOf="@+id/gamefield_button02"
+        app:layout_constraintTop_toBottomOf="@id/guideline_top" />
+
+    <Button
+        android:id="@+id/gamefield_button04"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toEndOf="@+id/gamefield_button03"
+        app:layout_constraintTop_toBottomOf="@id/guideline_top" />
+
+    <!-- 2 row -->
+    <Button
+        android:id="@+id/gamefield_button10"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_1"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/gamefield_button00" />
+
+    <Button
+        android:id="@+id/gamefield_button11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_2"
+        app:layout_constraintStart_toEndOf="@+id/guideline_1"
+        app:layout_constraintTop_toBottomOf="@id/gamefield_button01" />
+
+    <Button
+        android:id="@+id/gamefield_button12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_3"
+        app:layout_constraintStart_toEndOf="@+id/guideline_2"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button02" />
+
+    <Button
+        android:id="@+id/gamefield_button13"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_4"
+        app:layout_constraintStart_toEndOf="@+id/guideline_3"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button03" />
+
+    <Button
+        android:id="@+id/gamefield_button14"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintStart_toEndOf="@+id/guideline_4"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button04" />
+
+    <!-- 3 row -->
+    <Button
+        android:id="@+id/gamefield_button20"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_1"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button10" />
+
+    <Button
+        android:id="@+id/gamefield_button21"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_2"
+        app:layout_constraintStart_toEndOf="@+id/guideline_1"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button11" />
+
+    <Button
+        android:id="@+id/gamefield_button22"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_3"
+        app:layout_constraintStart_toEndOf="@+id/guideline_2"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button12" />
+
+    <Button
+        android:id="@+id/gamefield_button23"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_4"
+        app:layout_constraintStart_toEndOf="@+id/guideline_3"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button13" />
+
+    <Button
+        android:id="@+id/gamefield_button24"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintStart_toEndOf="@+id/guideline_4"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button14" />
+
+    <!-- 4 row -->
+    <Button
+        android:id="@+id/gamefield_button30"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_1"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button20" />
+
+    <Button
+        android:id="@+id/gamefield_button31"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_2"
+        app:layout_constraintStart_toEndOf="@+id/guideline_1"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button21" />
+
+    <Button
+        android:id="@+id/gamefield_button32"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_3"
+        app:layout_constraintStart_toEndOf="@+id/guideline_2"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button22" />
+
+    <Button
+        android:id="@+id/gamefield_button33"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_4"
+        app:layout_constraintStart_toEndOf="@+id/guideline_3"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button23" />
+
+    <Button
+        android:id="@+id/gamefield_button34"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintStart_toEndOf="@+id/guideline_4"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button24" />
+
+    <!-- 5 row -->
+    <Button
+        android:id="@+id/gamefield_button40"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_1"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button30" />
+
+    <Button
+        android:id="@+id/gamefield_button41"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_2"
+        app:layout_constraintStart_toEndOf="@+id/guideline_1"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button31" />
+
+    <Button
+        android:id="@+id/gamefield_button42"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_3"
+        app:layout_constraintStart_toEndOf="@+id/guideline_2"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button32" />
+
+    <Button
+        android:id="@+id/gamefield_button43"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_4"
+        app:layout_constraintStart_toEndOf="@+id/guideline_3"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button33" />
+
+    <Button
+        android:id="@+id/gamefield_button44"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        app:layout_constraintDimensionRatio="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintStart_toEndOf="@+id/guideline_4"
+        app:layout_constraintTop_toBottomOf="@+id/gamefield_button34" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.77" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.59" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.41" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.23" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

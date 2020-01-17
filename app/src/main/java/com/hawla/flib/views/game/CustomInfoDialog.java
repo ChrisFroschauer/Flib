@@ -52,8 +52,9 @@ public class CustomInfoDialog extends DialogFragment {
         subTextView = view.findViewById(R.id.dialog_sub_text);
         subTextView.setText(subText);
         progressBar = view.findViewById(R.id.dialog_progress_bar);
-        imageView = view.findViewById(R.id.image);
+        imageView = view.findViewById(R.id.image_dialog);
 
+        handleImageForType();
         //---set the title for the dialog
         getDialog().setTitle(mainText);
 
@@ -76,5 +77,21 @@ public class CustomInfoDialog extends DialogFragment {
         params.width = WindowManager.LayoutParams.MATCH_PARENT;
         params.height = WindowManager.LayoutParams.MATCH_PARENT;
         getDialog().getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
+    }
+
+    private void handleImageForType(){
+        switch(this.type){
+            case LEVEL_UP:
+                imageView.setVisibility(View.GONE);
+                break;
+            case GAME_OVER:
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_skull_crossbones_solid, null));
+                break;
+            case LOSE_HEART:
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_heart_broken_solid, null));
+                break;
+            default:
+                break;
+        }
     }
 }
