@@ -59,7 +59,7 @@ public class GameOverActivity extends AppCompatActivity {
         prefs = getSharedPreferences(HIGHSCORE, MODE_PRIVATE);
 
         // intent extras:
-        isTimerace = getIntent().getBooleanExtra(INTENT_TIMERACE, INTENT_TIMERACE_DEFAULT); //TODO add to intent
+        isTimerace = getIntent().getBooleanExtra(INTENT_TIMERACE, INTENT_TIMERACE_DEFAULT);
         score = getIntent().getIntExtra(INTENT_SCORE, INTENT_SCORE_DEFAULT);
 
         initViews();
@@ -111,14 +111,14 @@ public class GameOverActivity extends AppCompatActivity {
     }
 
     private void fillHighscore(boolean isTimerace){
-        String prefKey = isTimerace ? "TOP10_TIMERACE" : "TOP10_ENDLESS";
+        String prefKey = isTimerace ? TOP_10_TIMERACE : TOP_10_ENDLESS;
         String top10 = prefs.getString(prefKey, DEFAULT_SCORES);
         // Get List out of the string:
         List<HighscoreEntry> topList = new ArrayList<>();
-        String[] top10Split = top10.split(SEPARATOR_ENTRIES); //TODO forbid , in edit text
+        String[] top10Split = top10.split(SEPARATOR_ENTRIES);
         for(String entry : top10Split){
             if (!entry.isEmpty()) {
-                String[] split = entry.split(SEPARATOR_NAME_SCORE); //TODO forbid - in edit text
+                String[] split = entry.split(SEPARATOR_NAME_SCORE);
                 topList.add(new HighscoreEntry(split[0], Integer.parseInt(split[1])));
                 Log.i("fillHighscore", "Insert into topList: " + split[0] + " " + split[1]);
             }
@@ -144,10 +144,10 @@ public class GameOverActivity extends AppCompatActivity {
 
         // Get List out of the string:
         List<HighscoreEntry> topList = new ArrayList<>();
-        String[] top10Split = top10.split(SEPARATOR_ENTRIES); //TODO forbid , in edit text
+        String[] top10Split = top10.split(SEPARATOR_ENTRIES);
         for(String entry : top10Split){
             if (!entry.isEmpty()) {
-                String[] split = entry.split(SEPARATOR_NAME_SCORE); //TODO forbid - in edit text
+                String[] split = entry.split(SEPARATOR_NAME_SCORE);
                 topList.add(new HighscoreEntry(split[0], Integer.parseInt(split[1])));
             }
         }

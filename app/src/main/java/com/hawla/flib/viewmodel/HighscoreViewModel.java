@@ -43,10 +43,10 @@ public class HighscoreViewModel extends AndroidViewModel {
 
         // Get List out of the string:
         List<HighscoreEntry> topList = new ArrayList<>();
-        String[] top10Split = top10.split(SEPARATOR_ENTRIES); //TODO forbid , in edit text
+        String[] top10Split = top10.split(SEPARATOR_ENTRIES);
         for(String entry : top10Split){
             if (!entry.isEmpty()) {
-                String[] split = entry.split(SEPARATOR_NAME_SCORE); //TODO forbid - in edit text
+                String[] split = entry.split(SEPARATOR_NAME_SCORE);
                 topList.add(new HighscoreEntry(split[0], Integer.parseInt(split[1])));
                 Log.i("fillHighscore", "Insert into topList: " + split[0] + " " + split[1]);
             }

@@ -1,0 +1,113 @@
+<resources>
+    <string name="app_name">Flib</string>
+
+
+    <string name="endless_mode">Endlos</string>
+    <string name="timerace_mode">Zeitrennen</string>
+    <string name="highscore">Highscore</string>
+    <string name="options">Optionen</string>
+
+    <string name="title_activity_settings">Einstellungen</string>
+
+    <!-- About Preferences -->
+    <string name="about_header">Über</string>
+    <string name="version">App Version</string>
+
+    <!-- General Preferences -->
+    <string name="game_size">Spielfeld</string>
+    <string-array name="game_size_human">
+        <item>3x3</item>
+        <item>4x4</item>
+        <item>5x5</item>
+        <item>6x6</item>
+        <item>7x7</item>
+    </string-array>
+    <string-array name="game_size_data">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string name="turns">Züge</string>
+    <string-array name="turns_data">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string name="are_increasing">Züge steigern sich</string>
+    <string name="are_increasing_summary_on">Züge steigern sich alle fünf Level</string>
+    <string name="are_increasing_summary_off">Züge bleiben konstant</string>
+    <string name="hearts">Herzen</string>
+    <string-array name="hearts_data">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string name="game_time">Zeit</string>
+    <string-array name="game_time_human">
+        <item>1:00 Minute</item>
+        <item>2:00 Minuten</item>
+        <item>3:00 Minuten</item>
+        <item>4:00 Minuten</item>
+        <item>5:00 Minuten</item>
+    </string-array>
+    <string-array name="game_time_data">
+        <item>1:00</item>
+        <item>2:00</item>
+        <item>3:00</item>
+        <item>4:00</item>
+        <item>5:00</item>
+    </string-array>
+    <string name="pattern_pick">Muster</string>
+    <string name="pattern_pick_summary">Die Felder drehen sich im gewählten Muster</string>
+    <string name="general_header">Allgemein</string>
+
+    <!-- in game -->
+    <string name="turns_left">Züge übrig</string>
+    <string name="no_hearts">keine Herzen mehr</string>
+    <string name="infinite">∞</string>
+
+    <!-- dialog -->
+    <string name="lose_heart">Herz verloren</string>
+    <string name="lose_game">Game Over</string>
+    <string name="level_up">Level</string>
+    <string name="current_level">Level</string>
+
+    <!-- gamover and highscore activity -->
+    <string name="game_over">Game Over</string>
+    <string name="score">Score:</string>
+    <string name="enter_name">Kürzel:</string>
+
+    <!-- leave game dialog -->
+    <string name="leave_dialog_title">Aktuelles Spiel abbrechen?</string>
+    <string name="leave_dialog_positive">Verlassen</string>
+    <string name="leave_dialog_negative">Weiterspielen</string>
+
+    <!-- loading text -->
+    <string name="loading_1">Schüttel die Muster</string>
+    <string name="loading_2">Backe einen Kuchen</string>
+    <string name="loading_3">Füttere die Schafe</string>
+
+    <!-- explanation dialog -->
+    <string name="explanation_title">Zum Einstieg</string>
+    <string name="explanation_text1">Im Spiel hast du ein Spielbrett und ein Muster mithilfe dessen du
+    das Spielbrett beeinflussen kannst.\nDrücke auf ein Feld des Spielbretts um es und die umliegenden
+        Felder nach dem Muster zu verändern.\n\nZiel des Spiels ist es alle Felder farbig zu machen.\n\nEs
+    ist immer möglich das Brett mit dem aktuellen Muster in maximal der Anzahl an Zügen zu lösen.\nDoch Vorsicht
+    wenn du keine Herzen mehr hast, oder die Zeit abläuft endet das Spiel.</string>
+    <string name="explanation_pattern">Ein mögliches Muster sieht so aus:</string>
+    <string name="explanation_pattern2">Du kannst das Muster, die Spielbrettgröße und viele andere Dinge
+        in den Einstellungen verändern.\nProbiers einfach aus.\n\nViel Spaß!</string>
+
+    <!-- Training -->
+    <string name="training_title">Training</string>
+    <string name="undo">Rückgängig</string>
+
+    <!-- content descriptions -->
+    <string name="dialog_image">Bild</string>
+</resources>

@@ -104,7 +104,8 @@
             android:textIsSelectable="true"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
-            app:layout_constraintTop_toBottomOf="@id/score_text_view" />
+            app:layout_constraintTop_toBottomOf="@id/score_text_view"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_right"

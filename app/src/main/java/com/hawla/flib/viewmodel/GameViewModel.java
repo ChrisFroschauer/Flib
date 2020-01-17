@@ -256,8 +256,8 @@ public class GameViewModel extends AndroidViewModel {
         String totalTurns = prefs.getString(TURNS, TURNS_DEFAULT);
         Log.i("GameViewModel", totalTurns + " turns");
         this.totalTurns = Integer.parseInt(totalTurns);
-        if (this.totalTurns > 9){ //TODO: Total Turns with >= gameSize*gameSize is dumb isn't it?
-            this.totalTurns = 9;
+        if (this.totalTurns >= this.gameSize*this.gameSize){
+            this.totalTurns = (this.gameSize*this.gameSize) - 1;
         }
         currentTurnsLeft.setValue(this.totalTurns);
 

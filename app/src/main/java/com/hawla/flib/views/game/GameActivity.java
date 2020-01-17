@@ -268,7 +268,6 @@ public class GameActivity extends AppCompatActivity {
 
                 @Override
                 public void onFinish(){
-                    //TODO GAME OVER
                     Log.i("TIMER", "finished");
                     model.gameOver();
                 }
